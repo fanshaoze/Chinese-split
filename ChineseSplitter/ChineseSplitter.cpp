@@ -6,6 +6,10 @@
 
 int main()
 {
+	killspace();
+	makedic();
+	adgl();
+
     return 0;
 }
 
