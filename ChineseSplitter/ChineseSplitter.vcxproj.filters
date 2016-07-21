@@ -24,12 +24,30 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="make_dic.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="kill_space.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="zdgl_fenci.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ChineseSplitter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="kill_space.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="make_dic.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="zdgl_fenci.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
