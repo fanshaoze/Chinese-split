@@ -251,7 +251,9 @@ int adgl()
 		word.append(1, ch2);
 		if ("。" == word)//一个句子
 		{
+			
 			s_complete.clear();
+			cout << sentance;
 			s_complete = zdgl_fenci(sentance);
 			s_complete += " 。 ";//加上“。”
 			f_out << s_complete;//输出

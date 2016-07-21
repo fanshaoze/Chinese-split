@@ -7,6 +7,7 @@
 int main()
 {
 	killspace();
+	dic_init_test();
 	makedic();
 	adgl();
 
