@@ -22,7 +22,7 @@ int makedic()
 	ch = fgetc(f_in);
 	while (EOF != ch)
 	{
-		if (' ' != ch&&'\n' != ch)//词的一部分 
+		if (' ' != ch && '\n' != ch)//词的一部分 
 		{
 			word.append(1, ch);
 			if ("。" == word)
@@ -40,27 +40,34 @@ int makedic()
 			}
 			dic_it = dic.find(word);
 			if (dic_it != dic.end())
-			{
-				//找到 
+			{//找到 
 				dic_it->second = dic_it->second + 1;
 				word.clear();
 			}
 			else
-			{
-				//新单词
+			{//新单词
 				count++;
 				dic.insert(pair<string, int>(word, 1));
 				word.clear();
 			}
-
 		}
 		ch = fgetc(f_in);
 	}
 	f_out << count << endl;
 	dic_it = dic.begin();
+	int x = 0;
+	string temps;
+	dic_it++;
 	while (dic_it != dic.end())
 	{
-		f_out << dic_it->first << endl;
+		for (x = 0;;x++)
+		{
+			if (dic_it->first[x] == '/') break;
+		}
+		temps = "";
+		temps.append(dic_it->first.substr(0, x));
+		temps.append("\0");
+		f_out << temps << endl;
 		rate = (double)(dic_it->second) / count;
 		f_out << rate << endl;
 		dic_it++;

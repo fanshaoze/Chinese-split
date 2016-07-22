@@ -10,18 +10,18 @@ const int max_word = 20;//假设一个词最长包括10个汉字
 
 double laplace;//laplace平滑
 
-map<string, double> dic;//词典
+map<string, double> dicz;//词典
 map <string, double>::iterator dic_it;
-
+//map键值对
 void dic_init_test(void)//测试用
 {
 	int count_text = 10000000;
 	laplace = (double)1 / (count_text + 1);
-	dic.insert(pair<string, double>("有", 0.018));
-	dic.insert(pair<string, double>("有意", 0.0005));
-	dic.insert(pair<string, double>("意见", 0.001));
-	dic.insert(pair<string, double>("见", 0.0002));
-	dic.insert(pair<string, double>("分歧", 0.0001));
+	dicz.insert(pair<string, double>("有", 0.018));
+	dicz.insert(pair<string, double>("有意", 0.0005));
+	dicz.insert(pair<string, double>("意见", 0.001));
+	dicz.insert(pair<string, double>("见", 0.0002));
+	dicz.insert(pair<string, double>("分歧", 0.0001));
 }
 
 void dic_init(void)//初始化词典
@@ -36,7 +36,7 @@ void dic_init(void)//初始化词典
 	{
 		file >> word_text;
 		file >> rate_text;
-		dic.insert(pair<string, double>(word_text, rate_text));
+		dicz.insert(pair<string, double>(word_text, rate_text));
 	}
 	file.close();
 }
@@ -61,18 +61,16 @@ string zdgl_fenci(string sentance)//最大概率分词，输入为不带“。”的句子，输出为
 		{
 			temp_word.append(1, sentance.at(j));
 			temp_word.append(1, sentance.at(j + 1));
-			cout << endl;
-			cout << temp_word << endl;
-			dic_it = dic.find(temp_word);
+			dic_it = dicz.find(temp_word);
 			//cout << dic_it << endl;
-			//cout << dic.end();
-			if (dic_it != dic.end() || j == i)//有记录，或是第一个词
+			//cout << dicz.end();
+			if (dic_it != dicz.end() || j == i)//有记录，或是第一个词
 			{
 				word_pre w_pre;
 				word_pre_num++;
 				w_pre.num = word_pre_num;
 
-				if (dic_it != dic.end())
+				if (dic_it != dicz.end())
 					w_pre.word_rate = dic_it->second;
 				else
 					w_pre.word_rate = laplace;
@@ -110,8 +108,8 @@ string zdgl_fenci(string sentance)//最大概率分词，输入为不带“。”的句子，输出为
 	word_pre w_pre;
 
 	w_pre.num=word_pre_num;
-	dic_it=dic.find(temp_word);
-	if(dic_it!=dic.end())
+	dic_it=dicz.find(temp_word);
+	if(dic_it!=dicz.end())
 	{
 	w_pre.word_rate=dic_it->second;
 	}
@@ -256,7 +254,6 @@ int adgl()
 		{
 			
 			s_complete.clear();
-			cout << sentance;
 			s_complete = zdgl_fenci(sentance);
 			s_complete += " 。 ";//加上“。”
 			f_out << s_complete;//输出
