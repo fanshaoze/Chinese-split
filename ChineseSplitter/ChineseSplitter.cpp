@@ -8,7 +8,7 @@ int main()
 {
 	killspace();
 	dic_init_test();
-	makedic();
+	//makedic();
 	adgl();
 
     return 0;

@@ -61,8 +61,11 @@ string zdgl_fenci(string sentance)//最大概率分词，输入为不带“。”的句子，输出为
 		{
 			temp_word.append(1, sentance.at(j));
 			temp_word.append(1, sentance.at(j + 1));
-
+			cout << endl;
+			cout << temp_word << endl;
 			dic_it = dic.find(temp_word);
+			//cout << dic_it << endl;
+			//cout << dic.end();
 			if (dic_it != dic.end() || j == i)//有记录，或是第一个词
 			{
 				word_pre w_pre;
