@@ -1,95 +1,63 @@
 #include "make_dic.h"
 #include "stdafx.h"
-const char *train_text = "corpus_for_train.txt";//训练文件 
-const char *dic_text = "dic.txt";//输出词典文件 
+const char *train = "train.txt";//训练文件 
+const char *dicdoc = "dic.txt";//输出词典文件 
 
 
 map <string, int> dic;//词典表
-map <string, int>::iterator dic_it;
+map <string, int>::iterator nowdic;
 
 //map<string, double> dic_in_text;//test
 
 int makedic()
 {
-	FILE *f_in;
-	f_in = fopen(train_text, "r");
-	ofstream f_out(dic_text);
-
-	double rate = 0;
-	int count = 0;
+	double gailv = 0;
+	int number = 0,x = 0;
 	char ch;
-	string word;
-	ch = fgetc(f_in);
-	while (EOF != ch)
-	{
-		if (' ' != ch && '\n' != ch)//词的一部分 
-		{
-			word.append(1, ch);
-			if ("。" == word)
-				word.clear();
-
+	FILE *fin;
+	string atom;
+	string temps = "";
+	fin = fopen(train, "r");
+	ch = fgetc(fin);
+	ofstream fout(dicdoc);
+	while (ch != EOF) {
+		if (ch != '\n'  && ch != ' ') {
+			atom.append(1, ch);
+			if ("。" == atom) atom.clear();
 		}
-		else//单词结束 
-		{
-
-			if (" " == word || 0 == word.size())
-			{
-				word.clear();
-				ch = fgetc(f_in);
+		else {
+			if (" " == atom || 0 == atom.size()) {
+				atom.clear();
+				ch = fgetc(fin);
 				continue;
 			}
-			dic_it = dic.find(word);
-			if (dic_it != dic.end())
-			{//找到 
-				dic_it->second = dic_it->second + 1;
-				word.clear();
-			}
-			else
-			{//新单词
-				count++;
-				dic.insert(pair<string, int>(word, 1));
-				word.clear();
+			else {
+				nowdic = dic.find(atom);
+				if (dic.end() == nowdic) {
+					dic.insert(pair<string, int>(atom, 1));
+					number++;
+					atom.clear();
+				}
+				else {
+					nowdic->second += 1;
+					atom.clear();
+				}
 			}
 		}
-		ch = fgetc(f_in);
+		ch = fgetc(fin);
 	}
-	f_out << count << endl;
-	dic_it = dic.begin();
-	int x = 0;
-	string temps;
-	dic_it++;
-	while (dic_it != dic.end())
+	nowdic = dic.begin();
+	nowdic++;
+	fout << number << endl;
+	while (nowdic != dic.end())
 	{
-		for (x = 0;;x++)
-		{
-			if (dic_it->first[x] == '/') break;
-		}
-		temps = "";
-		temps.append(dic_it->first.substr(0, x));
-		temps.append("\0");
-		f_out << temps << endl;
-		rate = (double)(dic_it->second) / count;
-		f_out << rate << endl;
-		dic_it++;
+		for (x = 0;; x++) if (nowdic->first[x] == '/') break;
+		gailv = (double)(nowdic->second) / number;
+		fout << nowdic->first.substr(0, x) << endl;
+		fout << gailv << endl;
+		nowdic++;
 	}
-
-	f_out.close();
-	fclose(f_in);
-	/*测试用
-	ifstream file(dic_text);
-	int count_text;
-	file>>count_text;
-	string word_text;
-	double rate_text;
-	for(int i=0; i<count_text; i++)
-	{
-	file>>word_text;
-	file>>rate_text;
-	dic_in_text.insert(pair<string,double>(word_text,rate_text));
-	}
-
-	file.close();
-	*/
-
+	fout.close();
+	fclose(fin);
 	return 0;
 }
