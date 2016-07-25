@@ -10,9 +10,9 @@
 #include <stdio.h>
 #include <tchar.h>
 
-#include "kill_space.h"
+#include "splitall.h"
 #include "make_dic.h"
-#include "zdgl_fenci.h"
+#include "chfenci.h"
 
 
 

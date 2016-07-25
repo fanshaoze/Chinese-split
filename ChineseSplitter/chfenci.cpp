@@ -1,8 +1,8 @@
-#include"zdgl_fenci.h"
+#include"chfenci.h"
 #include "stdafx.h"
 
-const char *target = "target.txt";//输入文件
-const char *out_put = "2011211366.txt";//输出文件 
+const char *target = "divresult.txt";//输入文件
+const char *out_put = "result.txt";//输出文件 
 const char *dic_text2 = "dic.txt";//输入词典文件 
 
 const int max_word = 20;//假设一个词最长包括10个汉字

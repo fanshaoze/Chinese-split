@@ -6,7 +6,7 @@
 
 int main()
 {
-	killspace();
+	splitall();
 	makedic();
 	adgl();
 

@@ -9,5 +9,5 @@ Description: É¾³ý¿Õ¸ñ
 */
 using namespace std;
 
-int killspace();
+int splitall();
 

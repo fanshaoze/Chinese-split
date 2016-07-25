@@ -27,10 +27,10 @@
     <ClInclude Include="make_dic.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="kill_space.h">
+    <ClInclude Include="splitall.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="zdgl_fenci.h">
+    <ClInclude Include="chfenci.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -41,13 +41,13 @@
     <ClCompile Include="ChineseSplitter.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="kill_space.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="make_dic.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="zdgl_fenci.cpp">
+    <ClCompile Include="splitall.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="chfenci.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
