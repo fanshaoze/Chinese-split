@@ -9,18 +9,17 @@
 
 using namespace std;
 
-typedef struct word_pre//单词池内元素
+typedef struct wordlist//单词池内元素
 {
-	int num;//标记
-	int p_begin;//起始位置
-	int p_end;//结束位置
-	double word_rate;//单词本身概率
-	double plus_rate;//单词累进概率
-	int best;//最佳左邻词
-	string this_word;//词本身
-}word_pre;
+	double rateone;//单词本身概率
+	double rateall;//单词累进概率
+	int bestleft;//最佳左邻词
+	int begin;//起始位置
+	int end;//结束位置
+	int index;//标记
+	string wordnow;//词本身
+}wordlist;
 
-void dic_init_test(void);//测试用;
-void dic_init(void);//初始化词典
-string zdgl_fenci(string sentance);
+void init(void);//初始化词典
+string zfenci(string sentance);
 int adgl();
