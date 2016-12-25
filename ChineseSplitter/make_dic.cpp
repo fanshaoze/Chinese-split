@@ -13,6 +13,7 @@ int makedic()
 {
 	double gailv = 0;
 	int number = 0,x = 0;
+	// yes
 	char ch;
 	FILE *fin;
 	string atom;
